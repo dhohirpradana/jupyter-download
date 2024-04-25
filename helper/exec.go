@@ -14,11 +14,11 @@ func Exec(bashCommand string, args []string) error {
 	cmd.Stderr = &stderrBuf
 
 	if err := cmd.Run(); err != nil {
-		return errors.New("exec err: " + err.Error())
+		return errors.New(err.Error())
 	}
 
-	fmt.Println(stdoutBuf.String())
-	fmt.Println(stderrBuf.String())
+	fmt.Println("stdout", stdoutBuf.String())
+	fmt.Println("stderr", stderrBuf.String())
 
 	return nil
 }

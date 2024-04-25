@@ -25,6 +25,7 @@ func main() {
 	app.Use(cors.New())
 
 	app.Post("/dl-folder", isolateJupyter.FolderDownload)
+	app.Post("/dl-files", isolateJupyter.FilesDownload)
 	app.Get("/metrics", monitor.New())
 
 	log.Fatal(app.Listen(":9090"))

@@ -13,7 +13,6 @@ WORKDIR /app
 COPY --from=builder /usr/local/bin/kubectl /usr/local/bin/kubectl
 
 COPY jupyter-download /app
-COPY .env /app
 
 EXPOSE 9090
 

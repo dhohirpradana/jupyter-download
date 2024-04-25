@@ -15,6 +15,7 @@ WORKDIR /app
 COPY --from=builder /usr/local/bin/kubectl /usr/local/bin/kubectl
 
 COPY jupyter-download /app
+COPY kubeconfig /app
 
 RUN apt update -y && apt install zip -y
 

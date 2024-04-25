@@ -49,8 +49,7 @@ func (h DownloadHandler) FolderDownload(c *fiber.Ctx) (err error) {
 	}
 
 	defer func() {
-		os.RemoveAll(randomUUIDString)
-		os.Remove(temp + ".zip")
+		_ = removeFiles(randomUUIDString, temp)
 	}()
 
 	c.Set(fiber.HeaderContentType, "application/zip")

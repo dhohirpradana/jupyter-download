@@ -6,6 +6,8 @@ RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -
     && chmod +x kubectl \
     && mv kubectl /usr/local/bin/
 
+
+
 FROM nginx
 
 WORKDIR /app
@@ -13,6 +15,8 @@ WORKDIR /app
 COPY --from=builder /usr/local/bin/kubectl /usr/local/bin/kubectl
 
 COPY jupyter-download /app
+
+RUN apt update -y && apt install zip -y
 
 EXPOSE 9090
 

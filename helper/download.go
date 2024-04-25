@@ -45,6 +45,7 @@ func (h DownloadHandler) FolderDownload(c *fiber.Ctx) (err error) {
 	args1 := []string{"-jr", temp + ".zip", temp}
 	err = Exec("zip", args1)
 	if err != nil {
+		_ = removeFiles(randomUUIDString, temp)
 		return fiber.NewError(fiber.StatusInternalServerError, err.Error())
 	}
 
@@ -89,9 +90,11 @@ func (h DownloadHandler) FilesDownload(c *fiber.Ctx) (err error) {
 			fmt.Println(file + ": OK")
 		} else if os.IsNotExist(err) {
 			fmt.Println(file + ": No such file or directory")
+			_ = removeFiles(randomUUIDString, temp)
 			return fiber.NewError(fiber.StatusUnprocessableEntity, file+": No such file or directory")
 		} else {
 			fmt.Println(file + ": " + err.Error())
+			_ = removeFiles(randomUUIDString, temp)
 			return fiber.NewError(fiber.StatusUnprocessableEntity, file+": "+err.Error())
 		}
 	}

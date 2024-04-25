@@ -3,7 +3,7 @@ package helper
 import (
 	"github.com/gofiber/fiber/v2"
 	"gopkg.in/validator.v2"
-	"jupyter-folder-download/entity"
+	"jupyter-download/entity"
 	"os"
 	"path/filepath"
 )

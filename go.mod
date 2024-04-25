@@ -1,4 +1,4 @@
-module jupyter-folder-download
+module jupyter-download
 
 go 1.22
 

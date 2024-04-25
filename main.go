@@ -7,7 +7,7 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/helmet"
 	"github.com/gofiber/fiber/v2/middleware/monitor"
-	DownloadHandler "jupyter-folder-download/helper"
+	DownloadHandler "jupyter-download/helper"
 )
 
 func main() {

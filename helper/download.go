@@ -42,6 +42,10 @@ func (h DownloadHandler) FolderDownload(c *fiber.Ctx) (err error) {
 		return fiber.NewError(fiber.StatusInternalServerError, err.Error())
 	}
 
+	if _, err := os.Stat(dir); os.IsNotExist(err) {
+		return fiber.NewError(fiber.StatusBadRequest, dir+": No such file or directory")
+	}
+
 	args1 := []string{"-jr", temp + ".zip", temp}
 	err = Exec("zip", args1)
 	if err != nil {

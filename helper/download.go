@@ -42,7 +42,7 @@ func (h DownloadHandler) FolderDownload(c *fiber.Ctx) (err error) {
 		return fiber.NewError(fiber.StatusInternalServerError, err.Error())
 	}
 
-	if _, err := os.Stat(dir); os.IsNotExist(err) {
+	if _, err := os.Stat(temp); os.IsNotExist(err) {
 		return fiber.NewError(fiber.StatusBadRequest, dir+": No such file or directory")
 	}
 
